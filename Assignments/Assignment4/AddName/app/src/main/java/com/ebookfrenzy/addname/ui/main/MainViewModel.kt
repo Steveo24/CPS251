@@ -14,11 +14,12 @@ class MainViewModel : ViewModel() {
 
     }
 
-    fun getNames() {
+    fun getNames(): String {
         var nm = ""
         for(item in names)
         {
-           nm += item
+           nm += item + "\n"
         }
+        return nm
     }
 }

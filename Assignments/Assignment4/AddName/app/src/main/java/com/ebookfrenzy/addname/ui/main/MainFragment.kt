@@ -23,12 +23,15 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        binding.displayNames.text = viewModel.getNames()
+
         // TODO: Use the ViewModel
         binding.button.setOnClickListener {
             if (binding.editTextName.text.isNotEmpty())
             {
                 viewModel.addName(binding.editTextName.text.toString())
-                binding.displayNames.text = viewModel.getNames().toString()
+                binding.displayNames.text = viewModel.getNames()
             }
             else
             {

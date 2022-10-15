@@ -33,7 +33,7 @@
         android:id="@+id/displayNames"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_names_to_display"
+        android:hint="@string/no_names_to_display"
         android:textAlignment="viewStart"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
