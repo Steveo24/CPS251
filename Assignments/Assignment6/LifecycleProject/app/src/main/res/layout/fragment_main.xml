@@ -13,11 +13,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <data>
-        <variable
-            name="myViewModel"
-            type="com.ebookfrenzy.lifecycleproject.ui.main.MainViewModel" />
-    </data>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main"

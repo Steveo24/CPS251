@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.ebookfrenzy.lifecycleproject.R
 import com.ebookfrenzy.lifecycleproject.DemoObserver
 import com.ebookfrenzy.lifecycleproject.databinding.FragmentMainBinding
-import androidx.databinding.DataBindingUtil
-import com.ebookfrenzy.lifecycleproject.BR.myViewModel
-
 
 
 private lateinit var demoObserver: DemoObserver
@@ -23,22 +21,32 @@ class MainFragment : Fragment() {
     }
 
     private lateinit var viewModel: MainViewModel
-    lateinit var binding: MainFragmentBinding
+
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        binding.setVariable(myViewModel, viewModel)
+        val resultObserver = Observer<String> {
+                result -> binding.output.text = result.toString()
+        }
+        viewModel.getStatus().observe(viewLifecycleOwner, resultObserver)
+
         lifecycle.addObserver(DemoObserver())
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
-        binding.setLifecycleOwner(this)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
