@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.ebookfrenzy.navigationdemo.R
 import androidx.navigation.Navigation
+import com.ebookfrenzy.navigationdemo.R.drawable
 
 import com.ebookfrenzy.navigationdemo.databinding.MainFragmentBinding
 
@@ -39,11 +40,8 @@ class MainFragment : Fragment() {
 
         binding.button.setOnClickListener {
             val action: MainFragmentDirections.MainToSecond  =  MainFragmentDirections.mainToSecond()
-//            val bundle = bundleOf("image" to image)
-//            view.findNavController().navigate(R.id.confirmationAction, bundle)
 
-//            action.setImage(binding.image1)
-//            Navigation.findNavController(it).navigate(action)
+            action.setImage(R.drawable.image1)
             action.setMessage("Image1")
             Navigation.findNavController(it).navigate(action)
         }
@@ -51,6 +49,7 @@ class MainFragment : Fragment() {
         binding.button2.setOnClickListener {
             val action: MainFragmentDirections.MainToSecond  =  MainFragmentDirections.mainToSecond()
 
+            action.setImage(R.drawable.image2)
             action.setMessage("Image2")
             Navigation.findNavController(it).navigate(action)
         }
@@ -58,6 +57,7 @@ class MainFragment : Fragment() {
         binding.button3.setOnClickListener {
             val action: MainFragmentDirections.MainToSecond  =  MainFragmentDirections.mainToSecond()
 
+            action.setImage(R.drawable.image3)
             action.setMessage("Image3")
             Navigation.findNavController(it).navigate(action)
         }

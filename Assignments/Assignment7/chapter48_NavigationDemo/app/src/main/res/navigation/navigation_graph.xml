@@ -23,8 +23,10 @@
             android:name="message"
             app:argType="string"
             android:defaultValue="No Message" />
-        <argument android:name="image"
-            app:argType="reference" />
+        <argument
+            android:name="image"
+            app:argType="reference"
+            android:defaultValue="@string/app_name" />
 
 
     </fragment>
